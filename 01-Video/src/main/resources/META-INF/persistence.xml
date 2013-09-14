@@ -4,11 +4,16 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
 
-    <persistence-unit name="monsterPU" transaction-type="JTA">
+    <persistence-unit name="sampleJSFVideoPU" transaction-type="JTA">
         <jta-data-source>java:comp/DefaultDataSource</jta-data-source>
-        <class>org.agoncal.sample.javaee.monster.Book</class>
+        <class>org.agoncal.sample.jsf.video.Talk</class>
         <properties>
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="javax.persistence.schema-generation.scripts.action" value="drop-and-create"/>
+            <property name="javax.persistence.schema-generation.scripts.create-target" value="createVideo.ddl"/>
+            <property name="javax.persistence.schema-generation.scripts.drop-target" value="dropVideo.ddl"/>
+            <property name="javax.persistence.sql-load-script-source" value="insert.sql"/>
+            <property name="eclipselink.logging.level" value="FINE"/>
         </properties>
     </persistence-unit>
 </persistence>
