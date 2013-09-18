@@ -1,14 +1,10 @@
 package org.agoncal.sample.jsf.video;
 
-import javax.annotation.Resource;
-import javax.ejb.SessionContext;
 import javax.ejb.Stateful;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
-import javax.faces.convert.Converter;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -19,8 +15,13 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.servlet.http.Part;
 import javax.validation.constraints.NotNull;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +43,7 @@ public class TalkBean implements Serializable {
     private Talk talk;
     private List<Talk> pageItems;
     private Talk example = new Talk();
+    private Part uploadedVideo;
 
     @Inject
     private Conversation conversation;
@@ -52,6 +54,12 @@ public class TalkBean implements Serializable {
     // ======================================
     // =          Business Methods          =
     // ======================================
+
+    public String uploadVideo() throws IOException {
+        InputStream is = uploadedVideo.getInputStream();
+        Files.copy(is, Paths.get("/Users/antoniombp/Documents/Code/github/agoncal-sample-jsf/01-Video/target/sampleJSFVideo/videos/" + talk.getId() + ".mp4"));
+        return null;
+    }
 
     public String create() {
 
@@ -118,7 +126,7 @@ public class TalkBean implements Serializable {
         CriteriaBuilder builder = this.entityManager.getCriteriaBuilder();
 
         CriteriaQuery<Talk> criteria = builder.createQuery(Talk.class);
-        Root<Talk>root = criteria.from(Talk.class);
+        Root<Talk> root = criteria.from(Talk.class);
         TypedQuery<Talk> query = this.entityManager.createQuery(criteria.select(root).where(getSearchPredicates(root)));
         this.pageItems = query.getResultList();
     }
@@ -166,5 +174,13 @@ public class TalkBean implements Serializable {
 
     public List<Talk> getPageItems() {
         return this.pageItems;
+    }
+
+    public Part getUploadedVideo() {
+        return uploadedVideo;
+    }
+
+    public void setUploadedVideo(Part uploadedVideo) {
+        this.uploadedVideo = uploadedVideo;
     }
 }

@@ -35,6 +35,9 @@
 			<h:button value="Edit" outcome="create" includeViewParams="true"/>
 			<h:button value="Create New" outcome="create"/>
         </div>
+
+        <video src="#{request.contextPath}/videos/#{talkBean.talk.id}.mp4" width="500px" controls="controls"/>
+
     </ui:define>
 
 </ui:composition>
