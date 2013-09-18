@@ -29,7 +29,6 @@ public class Talk implements Serializable {
     @NotNull
     private String room;
     private String speaker;
-    private byte[] video;
 
     // ======================================
     // =            Constructors            =
@@ -87,13 +86,5 @@ public class Talk implements Serializable {
 
     public void setSpeaker(String speaker) {
         this.speaker = speaker;
-    }
-
-    public byte[] getVideo() {
-        return video;
-    }
-
-    public void setVideo(byte[] video) {
-        this.video = video;
     }
 }
