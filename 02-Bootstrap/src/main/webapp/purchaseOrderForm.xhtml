@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/resources/template.xhtml">
+
+    <ui:define name="title">Purchase Order Form</ui:define>
+    <ui:define name="description">This sample show a form using Bootstrap, Primefaces components and JSF</ui:define>
+
+    <ui:define name="content">
+
+        <h:form class="form-horizontal" role="form">
+
+            <div class="alert alert-success">This is a success</div>
+            <div class="alert alert-info">This is an info</div>
+            <div class="alert alert-warning">This is a waraning</div>
+            <div class="alert alert-danger">This is a danger</div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Customer</h3>
+                </div>
+                <div class="panel-body">
+
+                    <div class="form-group">
+                        <label for="inputFirstName" class="col-sm-2 control-label">First Name</label>
+                        <div class="col-sm-6">
+                            <input class="form-control" id="inputFirstName"/>
+                        </div>
+                        <span class="col-sm-4 text-danger">Danger</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputLastName" class="col-sm-2 control-label">Last Name</label>
+                        <div class="col-sm-6">
+                            <input class="form-control" id="inputLastName"/>
+                        </div>
+                        <span class="col-sm-4 text-danger">Danger</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                        <div class="input-group col-sm-6">
+                            <input type="text" class="form-control" id="inputEmail"/>
+                        </div>
+                        <span class="col-sm-4 text-danger">Danger</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputPhoneNumber" class="col-sm-2 control-label">Phone Num.</label>
+                        <div class="input-group col-sm-6">
+                            <input type="text" class="form-control" id="inputPhoneNumber"/>
+                        </div>
+                        <span class="col-sm-4 text-danger">Danger</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Delivery</h3>
+                </div>
+                <div class="panel-body">
+
+                    <div class="form-group">
+                        <label for="inputDeliveryDate" class="col-sm-2 control-label">Delivery Date</label>
+                        <div class="input-group col-sm-6">
+                            <input type="text" class="form-control" id="inputDeliveryDate"/>
+                        </div>
+                        <span class="col-sm-4 text-danger">Danger</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputStreet1" class="col-sm-2 control-label">Stree 1</label>
+                        <div class="input-group col-sm-6">
+                            <input type="text" class="form-control" id="inputStreet1"/>
+                        </div>
+                        <span class="col-sm-4 text-danger">Danger</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputStreet2" class="col-sm-2 control-label">Stree 2</label>
+                        <div class="input-group col-sm-6">
+                            <input type="text" class="form-control" id="inputStreet2"/>
+                        </div>
+                        <span class="col-sm-4 text-danger">Danger</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputCity" class="col-sm-2 control-label">City</label>
+                        <div class="input-group col-sm-6">
+                            <input type="text" class="form-control" id="inputCity"/>
+                        </div>
+                        <span class="col-sm-4 text-danger">Danger</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputZipcode" class="col-sm-2 control-label">Zipcode</label>
+                        <div class="input-group col-sm-6">
+                            <input type="text" class="form-control" id="inputZipcode"/>
+                        </div>
+                        <span class="col-sm-4 text-danger">Danger</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputCountry" class="col-sm-2 control-label">Country</label>
+                        <div class="input-group col-sm-6">
+                            <select class="form-control" id="inputCountry">
+                                <option></option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <span class="col-sm-4 text-danger">Danger</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Purchase Order</h3>
+                </div>
+                <div class="panel-body">
+
+                    <table class="table table-striped">
+                        <tr>
+                            <th>One</th>
+                            <th>Two</th>
+                            <th>Three</th>
+                            <th>Four</th>
+                        </tr>
+                        <tr>
+                            <td>One</td>
+                            <td>Two</td>
+                            <td>Three</td>
+                            <td>Four</td>
+                        </tr>
+                        <tr>
+                            <td>One</td>
+                            <td>Two</td>
+                            <td>Three</td>
+                            <td>Four</td>
+                        </tr>
+                        <tr>
+                            <td>One</td>
+                            <td>Two</td>
+                            <td>Three</td>
+                            <td>Four</td>
+                        </tr>
+                    </table>
+
+                    <div class="form-group">
+
+                        <div class="col-sm-3"/>
+                        <div class="col-sm-6">
+                            <ul class="pagination">
+                                <li><a href="#">&laquo;</a></li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">&raquo;</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-3"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-default">Reset</button>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+
+
+</ui:composition>

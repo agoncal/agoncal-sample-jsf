@@ -12,11 +12,17 @@
 
     <modules>
         <module>01-Video</module>
+        <module>02-Bootstrap</module>
     </modules>
 
     <properties>
         <version.java>1.7</version.java>
+        <version.javaee>7.0</version.javaee>
         <version.glassfish>4.0</version.glassfish>
+        <!-- UI (WebJar, Primefaces...) -->
+        <version.bootstrap>3.0.2</version.bootstrap>
+        <version.jquery>2.0.3-1</version.jquery>
+        <version.primefaces>4.0</version.primefaces>
         <!--Test-->
         <version.junit>4.11</version.junit>
         <version.arquillian>1.0.4.Final</version.arquillian>
@@ -42,7 +48,7 @@
             <dependency>
                 <groupId>javax</groupId>
                 <artifactId>javaee-api</artifactId>
-                <version>7.0</version>
+                <version>${version.javaee}</version>
                 <scope>provided</scope>
             </dependency>
 
@@ -54,7 +60,22 @@
                 <scope>provided</scope>
             </dependency>
 
-            <!-- Others -->
+            <!-- UI (WebJar, Primefaces...) -->
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>bootstrap</artifactId>
+                <version>${version.bootstrap}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>jquery</artifactId>
+                <version>${version.jquery}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.primefaces</groupId>
+                <artifactId>primefaces</artifactId>
+                <version>${version.primefaces}</version>
+            </dependency>
             <dependency>
                 <groupId>commons-fileupload</groupId>
                 <artifactId>commons-fileupload</artifactId>
