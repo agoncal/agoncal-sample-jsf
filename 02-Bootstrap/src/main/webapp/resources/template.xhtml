@@ -14,7 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="shortcut icon" href="./resources/favicon.png"/>
 
-        <title><ui:insert name="title">Default title</ui:insert></title>
+        <title><ui:insert name="title"/></title>
 
         <!-- Bootstrap core CSS -->
         <h:outputStylesheet library="webjars/bootstrap/3.0.2/css" name="bootstrap.css"/>
@@ -44,7 +44,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Samples <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Form</a></li>
+                                <li><h:link outcome="htmlForm">HTML Form</h:link></li>
                                 <li><a href="#">Another action</a></li>
                                 <li><a href="#">Something else here</a></li>
                             </ul>
@@ -53,22 +53,26 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="https://github.com/agoncal/agoncal-sample-jsf">GitHub</a></li>
                     </ul>
-                </div><!--/.nav-collapse -->
+                </div>
+                <!--/.nav-collapse -->
             </div>
-        </div><!--/ Fixed navbar -->
+        </div>
+        <!--/ Fixed navbar -->
 
         <!-- Container -->
         <div class="container">
 
             <!-- Main component for a primary marketing message or call to action -->
             <div class="jumbotron">
-                <h2><ui:insert name="title">Default title</ui:insert></h2>
-                <p><ui:insert name="description">Default description</ui:insert></p>
+                <h2><ui:insert name="title"/></h2>
+
+                <p><ui:insert name="description"/></p>
             </div>
 
-                <ui:insert name="content">Default content</ui:insert>
+            <ui:insert name="content"/>
 
-        </div> <!-- /container -->
+        </div>
+        <!-- /container -->
 
 
         <!-- Bootstrap core JavaScript
