@@ -44,6 +44,7 @@
                             <ul class="dropdown-menu">
                                 <li><h:link outcome="formHTML">HTML Form</h:link></li>
                                 <li><h:link outcome="formJSF">JSF Form</h:link></li>
+                                <li><h:link outcome="formPrimefaces">Primefaces Form</h:link></li>
                             </ul>
                         </li>
                     </ul>
@@ -77,6 +78,13 @@
         <!-- Placed at the end of the document so the pages load faster -->
         <h:outputScript library="webjars/jquery/2.0.3" name="jquery.min.js"/>
         <h:outputScript library="webjars/bootstrap/3.0.2/js" name="bootstrap.min.js"/>
+        <h:outputScript target="head">
+            // Add the $() function
+            $ = jQuery;
+            $(document).ready(function() {
+                jQuery.noConflict();
+            });
+        </h:outputScript>
 
     </h:body>
 </f:view>
