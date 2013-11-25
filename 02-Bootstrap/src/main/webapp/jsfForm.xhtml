@@ -1,0 +1,207 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" xmlns:f="http://java.sun.com/jsf/core"
+                template="/resources/template.xhtml">
+
+<ui:define name="title">JSF Form</ui:define>
+<ui:define name="description">This sample show a form using Bootstrap within a JSF page (and a JSF template)</ui:define>
+
+<ui:define name="content">
+
+    <h:form class="form-horizontal" role="form">
+
+        <h:messages globalOnly="true" errorClass="alert alert-danger" warnClass="alert alert-warning"
+                    infoClass="alert alert-info"/>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Customer</h3>
+            </div>
+            <div class="panel-body">
+
+                <div class="form-group">
+                    <label for="inputFirstName" class="col-sm-2 control-label">* First Name</label>
+
+                    <div class="col-sm-6 input-group">
+                        <h:inputText class="form-control" id="inputFirstName"/>
+                    </div>
+                    <h:message for="inputFirstName" styleClass="col-sm-4 text-danger"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputLastName" class="col-sm-2 control-label">* Last Name</label>
+
+                    <div class="col-sm-6">
+                        <h:inputText class="form-control" id="inputLastName"/>
+                    </div>
+                    <h:message for="inputLastName" styleClass="col-sm-4 text-danger"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputEmail" class="col-sm-2 control-label">* Email</label>
+
+                    <div class="input-group col-sm-6">
+                        <h:inputText pt:type="email" class="form-control" id="inputEmail"/>
+                    </div>
+                    <h:message for="inputEmail" styleClass="col-sm-4 text-danger"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputPhoneNumber" class="col-sm-2 control-label">Phone Num.</label>
+
+                    <div class="input-group col-sm-6">
+                        <h:inputText pt:type="tel" class="form-control" id="inputPhoneNumber"/>
+                    </div>
+                    <h:message for="inputPhoneNumber" styleClass="col-sm-4 text-danger"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputDateOfBirth" class="col-sm-2 control-label">Date of Birth</label>
+
+                    <div class="input-group col-sm-6">
+                        <h:inputText pt:type="date" class="form-control" id="inputDateOfBirth"/>
+                    </div>
+                    <h:message for="inputDateOfBirth" styleClass="col-sm-4 text-danger"/>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Delivery</h3>
+            </div>
+            <div class="panel-body">
+
+                <div class="form-group">
+                    <label for="inputDeliveryDate" class="col-sm-2 control-label">* Delivery Date</label>
+
+                    <div class="input-group col-sm-6">
+                        <h:inputText pt:type="date" class="form-control" id="inputDeliveryDate"/>
+                    </div>
+                    <h:message for="inputDeliveryDate" styleClass="col-sm-4 text-danger"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputStreet1" class="col-sm-2 control-label">* Stree 1</label>
+
+                    <div class="input-group col-sm-6">
+                        <h:inputText class="form-control" id="inputStreet1"/>
+                    </div>
+                    <h:message for="inputStreet1" styleClass="col-sm-4 text-danger"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputStreet2" class="col-sm-2 control-label">Stree 2</label>
+
+                    <div class="input-group col-sm-6">
+                        <h:inputText class="form-control" id="inputStreet2"/>
+                    </div>
+                    <h:message for="inputStreet2" styleClass="col-sm-4 text-danger"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputCity" class="col-sm-2 control-label">* City</label>
+
+                    <div class="input-group col-sm-6">
+                        <h:inputText class="form-control" id="inputCity"/>
+                    </div>
+                    <h:message for="inputCity" styleClass="col-sm-4 text-danger"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputZipcode" class="col-sm-2 control-label">* Zipcode</label>
+
+                    <div class="input-group col-sm-6">
+                        <h:inputText class="form-control" id="inputZipcode"/>
+                    </div>
+                    <h:message for="inputZipcode" styleClass="col-sm-4 text-danger"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputCountry" class="col-sm-2 control-label">* Country</label>
+
+                    <div class="input-group col-sm-6">
+                        <h:selectOneMenu class="form-control" id="inputCountry">
+                            <f:selectItem itemLabel="" itemValue=""/>
+                            <f:selectItem itemLabel="1" itemValue="1"/>
+                            <f:selectItem itemLabel="2" itemValue="2"/>
+                            <f:selectItem itemLabel="3" itemValue="3"/>
+                        </h:selectOneMenu>
+                    </div>
+                    <h:message for="inputCountry" styleClass="col-sm-4 text-danger"/>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Purchase Order</h3>
+            </div>
+            <div class="panel-body">
+
+                <table class="table table-striped">
+                    <tr>
+                        <th>Item</th>
+                        <th>Unit Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                    <tr>
+                        <td><h:inputText class="form-control" id="inputItem1"/></td>
+                        <td><h:inputText class="form-control" id="inputUnitPrice1"/></td>
+                        <td><h:inputText pt:type="number" class="form-control" id="inputQuantity1"/></td>
+                        <td><h:inputText class="form-control" id="inputTotal1" pt:disabled="disabled"/></td>
+                    </tr>
+                    <tr>
+                        <td><h:inputText class="form-control" id="inputItem2"/></td>
+                        <td><h:inputText class="form-control" id="inputUnitPrice2"/></td>
+                        <td><h:inputText pt:type="number" class="form-control" id="inputQuantity2"/></td>
+                        <td><h:inputText class="form-control" id="inputTotal2" pt:disabled="disabled"/></td>
+                    </tr>
+                    <tr>
+                        <td><h:inputText class="form-control" id="inputItem3"/></td>
+                        <td><h:inputText class="form-control" id="inputUnitPrice3"/></td>
+                        <td><h:inputText pt:type="number" class="form-control" id="inputQuantity3"/></td>
+                        <td><h:inputText class="form-control" id="inputTotal3" pt:disabled="disabled"/></td>
+                    </tr>
+                    <tr>
+                        <td><h:inputText class="form-control" id="inputItem4"/></td>
+                        <td><h:inputText class="form-control" id="inputUnitPrice4"/></td>
+                        <td><h:inputText pt:type="number" class="form-control" id="inputQuantity4"/></td>
+                        <td><h:inputText class="form-control" id="inputTotal4" pt:disabled="disabled"/></td>
+                    </tr>
+                    <tr>
+                        <td><h:inputText class="form-control" id="inputItem5"/></td>
+                        <td><h:inputText class="form-control" id="inputUnitPrice5"/></td>
+                        <td><h:inputText pt:type="number" class="form-control" id="inputQuantity5"/></td>
+                        <td><h:inputText class="form-control" id="inputTotal5" pt:disabled="disabled"/></td>
+                    </tr>
+                </table>
+
+                <div class="form-group">
+                    <label for="inputTotalAmount" class="col-sm-9 control-label">Total Amount</label>
+
+                    <div class="input-group col-sm-2">
+                        <h:inputText class="form-control" id="inputTotalAmount" pt:disabled="disabled"/>
+                    </div>
+                    <span class="col-sm-1"/>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-12">
+                <h:commandButton type="submit" class="btn btn-primary" value="Submit"/>
+                &#160;
+                <h:commandButton type="reset" class="btn btn-default" value="Reset"/>
+            </div>
+        </div>
+    </h:form>
+</ui:define>
+
+
+</ui:composition>
