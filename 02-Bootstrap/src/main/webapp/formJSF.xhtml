@@ -142,44 +142,39 @@
             </div>
             <div class="panel-body">
 
-                <table class="table table-striped">
-                    <tr>
-                        <th>Item</th>
-                        <th>Unit Price</th>
-                        <th>Quantity</th>
-                        <th>Total</th>
-                    </tr>
-                    <tr>
-                        <td><h:inputText class="form-control" id="inputItem1"/></td>
-                        <td><h:inputText class="form-control" id="inputUnitPrice1"/></td>
-                        <td><h:inputText pt:type="number" class="form-control" id="inputQuantity1"/></td>
-                        <td><h:inputText class="form-control" id="inputTotal1" pt:disabled="disabled"/></td>
-                    </tr>
-                    <tr>
-                        <td><h:inputText class="form-control" id="inputItem2"/></td>
-                        <td><h:inputText class="form-control" id="inputUnitPrice2"/></td>
-                        <td><h:inputText pt:type="number" class="form-control" id="inputQuantity2"/></td>
-                        <td><h:inputText class="form-control" id="inputTotal2" pt:disabled="disabled"/></td>
-                    </tr>
-                    <tr>
-                        <td><h:inputText class="form-control" id="inputItem3"/></td>
-                        <td><h:inputText class="form-control" id="inputUnitPrice3"/></td>
-                        <td><h:inputText pt:type="number" class="form-control" id="inputQuantity3"/></td>
-                        <td><h:inputText class="form-control" id="inputTotal3" pt:disabled="disabled"/></td>
-                    </tr>
-                    <tr>
-                        <td><h:inputText class="form-control" id="inputItem4"/></td>
-                        <td><h:inputText class="form-control" id="inputUnitPrice4"/></td>
-                        <td><h:inputText pt:type="number" class="form-control" id="inputQuantity4"/></td>
-                        <td><h:inputText class="form-control" id="inputTotal4" pt:disabled="disabled"/></td>
-                    </tr>
-                    <tr>
-                        <td><h:inputText class="form-control" id="inputItem5"/></td>
-                        <td><h:inputText class="form-control" id="inputUnitPrice5"/></td>
-                        <td><h:inputText pt:type="number" class="form-control" id="inputQuantity5"/></td>
-                        <td><h:inputText class="form-control" id="inputTotal5" pt:disabled="disabled"/></td>
-                    </tr>
-                </table>
+                <h:panelGrid columns="4" styleClass="table table-striped">
+
+                    <h:outputLabel value="Item"/>
+                    <h:outputLabel value="Unit Price"/>
+                    <h:outputLabel value="Quantity"/>
+                    <h:outputLabel value="Total"/>
+
+                    <h:inputText class="form-control" id="inputItem1"/>
+                    <h:inputText class="form-control" id="inputUnitPrice1"/>
+                    <h:inputText pt:type="number" class="form-control" id="inputQuantity1"/>
+                    <h:inputText class="form-control" id="inputTotal1" pt:disabled="disabled"/>
+
+                    <h:inputText class="form-control" id="inputItem2"/>
+                    <h:inputText class="form-control" id="inputUnitPrice2"/>
+                    <h:inputText pt:type="number" class="form-control" id="inputQuantity2"/>
+                    <h:inputText class="form-control" id="inputTotal2" pt:disabled="disabled"/>
+
+                    <h:inputText class="form-control" id="inputItem3"/>
+                    <h:inputText class="form-control" id="inputUnitPrice3"/>
+                    <h:inputText pt:type="number" class="form-control" id="inputQuantity3"/>
+                    <h:inputText class="form-control" id="inputTotal3" pt:disabled="disabled"/>
+
+                    <h:inputText class="form-control" id="inputItem4"/>
+                    <h:inputText class="form-control" id="inputUnitPrice4"/>
+                    <h:inputText pt:type="number" class="form-control" id="inputQuantity4"/>
+                    <h:inputText class="form-control" id="inputTotal4" pt:disabled="disabled"/>
+
+                    <h:inputText class="form-control" id="inputItem5"/>
+                    <h:inputText class="form-control" id="inputUnitPrice5"/>
+                    <h:inputText pt:type="number" class="form-control" id="inputQuantity5"/>
+                    <h:inputText class="form-control" id="inputTotal5" pt:disabled="disabled"/>
+
+                </h:panelGrid>
 
                 <div class="form-group">
                     <label for="inputTotalAmount" class="col-sm-9 control-label">Total Amount</label>
