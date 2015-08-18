@@ -13,6 +13,7 @@
     <modules>
         <module>01-Video</module>
         <module>02-Bootstrap</module>
+        <module>03-Login</module>
     </modules>
 
     <properties>
@@ -20,9 +21,9 @@
         <version.javaee>7.0</version.javaee>
         <version.glassfish>4.0</version.glassfish>
         <!-- UI (WebJar, Primefaces...) -->
-        <version.bootstrap>3.0.2</version.bootstrap>
-        <version.jquery>2.0.3-1</version.jquery>
-        <version.primefaces>4.0</version.primefaces>
+        <version.bootstrap>3.3.5</version.bootstrap>
+        <version.jquery>2.1.4</version.jquery>
+        <version.primefaces>5.2</version.primefaces>
         <version.primefaces-themes>1.0.10</version.primefaces-themes>
         <!--Test-->
         <version.junit>4.11</version.junit>
