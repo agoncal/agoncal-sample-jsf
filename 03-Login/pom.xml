@@ -17,10 +17,20 @@
     </parent>
 
     <dependencies>
+        <dependency>
+            <groupId>org.jboss.spec</groupId>
+            <artifactId>jboss-javaee-7.0</artifactId>
+            <type>pom</type>
+            <scope>provided</scope>
+        </dependency>
         <!-- UI (WebJar, Primefaces...) -->
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
         </dependency>
     </dependencies>
 

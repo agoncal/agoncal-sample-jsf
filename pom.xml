@@ -54,6 +54,15 @@
                 <scope>provided</scope>
             </dependency>
 
+            <!-- JBoss BOM -->
+            <dependency>
+                <groupId>org.jboss.spec</groupId>
+                <artifactId>jboss-javaee-7.0</artifactId>
+                <version>1.0.3.Final</version>
+                <type>pom</type>
+                <scope>provided</scope>
+            </dependency>
+
             <!-- GlassFish -->
             <dependency>
                 <groupId>org.glassfish.main.extras</groupId>
