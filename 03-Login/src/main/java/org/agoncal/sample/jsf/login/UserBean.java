@@ -22,10 +22,15 @@ public class UserBean implements Serializable
 
    private boolean loggedIn;
 
+   public String doNothing()
+   {
+      return null;
+   }
+
    public String doLogin()
    {
       loggedIn = true;
-      return null;
+      return "index";
    }
 
    public String doLogout()

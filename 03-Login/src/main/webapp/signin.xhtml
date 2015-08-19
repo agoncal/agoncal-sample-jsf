@@ -1,0 +1,38 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                template="/resources/template.xhtml">
+
+    <ui:define name="title">Signin</ui:define>
+
+    <ui:define name="body">
+
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <h:form class="form-signin">
+                    <h2 class="form-signin-heading">Please sign in</h2>
+                    <label for="inputEmail" class="sr-only">Email address</label>
+                    <h:inputText id="inputEmail" pt:type="email" class="form-control" pt:placeholder="Email address"
+                                 pt:required="true" pt:autofocus="true"/>
+                    <label for="inputPassword" class="sr-only">Password</label>
+                    <h:inputText id="inputPassword" pt:type="password" class="form-control" pt:placeholder="Password"
+                                 pt:required="true"/>
+
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="remember-me"> Remember me</input>
+                        </label>
+                    </div>
+                    <h:commandButton styleClass="btn btn-lg btn-primary btn-block" value="Sign in"
+                                     action="#{userBean.doLogin}"/>
+                    <h:link styleClass="btn btn-link" value="Sign up for an account" outcome="signup"/>
+                </h:form>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+
+    </ui:define>
+
+</ui:composition>
