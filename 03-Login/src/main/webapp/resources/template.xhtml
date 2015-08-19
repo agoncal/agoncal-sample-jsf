@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 <f:view xmlns="http://www.w3.org/1999/xhtml"
         xmlns:h="http://xmlns.jcp.org/jsf/html"
         xmlns:f="http://xmlns.jcp.org/jsf/core"
@@ -47,33 +48,43 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">JSF Login</a>
+                    <h:link class="navbar-brand" outcome="index.xhtml" value="JSF Login"/>
                 </div>
-                <h:panelGroup id="navbar" class="navbar-collapse collapse" layout="block"
-                              rendered="#{!userBean.loggedIn}">
-                    <h:form class="navbar-form navbar-right">
-                        <div class="form-group">
-                            <input type="text" placeholder="Email" class="form-control"/>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" placeholder="Password" class="form-control"/>
-                        </div>
-                        <h:commandButton type="submit" class="btn btn-success" action="#{userBean.doLogin}"
-                                         value="Signin"/>
-                    </h:form>
-                </h:panelGroup>
-                <h:panelGroup id="navbarf" class="navbar-collapse collapse" rendered="#{userBean.loggedIn}">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">Antonio Goncalves <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Profile</a></li>
-                            <li><a href="#">History</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Logout</a></li>
-                        </ul>
-                    </li>
-                </h:panelGroup>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#about">Shopping Cart</a></li>
+                        <li><a href="#">Admin</a></li>
+                    </ul>
+                    <h:panelGroup id="navbarNotLoggedIn" layout="block" rendered="#{!userBean.loggedIn}">
+                        <h:form class="navbar-form navbar-right">
+                            <div class="form-group">
+                                <h:inputText pt:type="text" pt:placeholder="Email" class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                                <h:inputText pt:type="password" pt:placeholder="Password" class="form-control"/>
+                            </div>
+                            <h:commandButton type="submit" class="btn btn-success" action="#{userBean.doLogin}"
+                                             value="Signin"/>
+                        </h:form>
+                    </h:panelGroup>
+                    <h:panelGroup id="navbarLoggedIn" layout="block" rendered="#{userBean.loggedIn}">
+                        <h:form>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown active">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                       aria-haspopup="true" aria-expanded="false">Dropdown <span
+                                            class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Profile</a></li>
+                                        <li><a href="#">History</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><h:commandLink action="#{userBean.doLogout}" value="Logout"/></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </h:form>
+                    </h:panelGroup>
+                </div>
                 <!--/.navbar-collapse -->
             </div>
         </nav>
