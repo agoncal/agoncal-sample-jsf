@@ -58,7 +58,7 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <h:form>
                         <ul class="nav navbar-nav">
-                            <li><h:commandLink action="#{usersBean.doFindAll}" value="Users"/></li>
+                            <li><h:commandLink action="#{userBean.doFindAll}" value="Users"/></li>
                             <li><a href="#">Admin</a></li>
                         </ul>
                     </h:form>
@@ -66,16 +66,16 @@
                         <div class="form-group">
                             <h:inputText pt:placeholder="Search" class="form-control"/>
                         </div>
-                        <h:commandButton type="submit" class="btn btn-success" action="#{userBean.doNothing}"
+                        <h:commandButton type="submit" class="btn btn-success" action="#{accountBean.doNothing}"
                                          value="Search"/>
-                        <h:panelGroup layout="block" class="form-group" rendered="#{!userBean.loggedIn}">
+                        <h:panelGroup layout="block" class="form-group" rendered="#{!accountBean.loggedIn}">
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="dropdown active">
                                     <h:link outcome="signin.xhtml" value="Connexion"/>
                                 </li>
                             </ul>
                         </h:panelGroup>
-                        <h:panelGroup layout="block" class="form-group" rendered="#{userBean.loggedIn}">
+                        <h:panelGroup layout="block" class="form-group" rendered="#{accountBean.loggedIn}">
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="dropdown active">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -85,7 +85,7 @@
                                         <li><h:link outcome="signup" value="Profile"/></li>
                                         <li><a href="#">History</a></li>
                                         <li role="separator" class="divider"></li>
-                                        <li><h:commandLink action="#{userBean.doLogout}" value="Logout"/></li>
+                                        <li><h:commandLink action="#{accountBean.doLogout}" value="Logout"/></li>
                                     </ul>
                                 </li>
                             </ul>

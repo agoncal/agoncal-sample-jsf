@@ -1,18 +1,13 @@
 package org.agoncal.sample.jsf.login.view;
 
-import java.io.Serializable;
+import java.util.List;
 
-import javax.enterprise.context.SessionScoped;
-import javax.enterprise.context.spi.AlterableContext;
-import javax.enterprise.inject.spi.Bean;
-import javax.enterprise.inject.spi.BeanManager;
-import javax.faces.application.FacesMessage;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 
 import org.agoncal.sample.jsf.login.model.User;
 
@@ -20,76 +15,28 @@ import org.agoncal.sample.jsf.login.model.User;
  * @author Antonio Goncalves http://www.antoniogoncalves.org --
  */
 @Named
-@SessionScoped
-@Transactional
-public class UserBean implements Serializable
+@RequestScoped
+public class UserBean
 {
-
-   @Inject
-   private BeanManager beanManager;
-
-   @Inject
-   private FacesContext facesContext;
 
    @PersistenceContext(unitName = "sampleJSFLoginPU")
    private EntityManager em;
 
-   private User user = new User();
+   private List<User> users;
 
-   private boolean loggedIn;
-
-   public String doNothing()
+   public String doFindAll()
    {
-      return null;
+      users = em.createNamedQuery(User.FIND_ALL, User.class).getResultList();
+      return "users";
    }
 
-   public String doPersistOrMerge()
+   public List<User> getUsers()
    {
-      if (user.getId() == null)
-      {
-         em.persist(user);
-         facesContext.addMessage(null, new FacesMessage("Successful", "User created " + user.getFirstName()));
-      }
-      else
-      {
-         em.merge(user);
-         facesContext.addMessage(null, new FacesMessage("Successful", "User updated " + user.getFirstName()));
-      }
-      loggedIn = true;
-      return null;
+      return users;
    }
 
-   public String doLogin()
+   public void setUsers(List<User> users)
    {
-      loggedIn = true;
-      return "index";
-   }
-
-   public String doLogout()
-   {
-      AlterableContext ctx = (AlterableContext) beanManager.getContext(SessionScoped.class);
-      Bean<?> myBean = beanManager.getBeans(UserBean.class).iterator().next();
-      ctx.destroy(myBean);
-      return null;
-   }
-
-   public boolean isLoggedIn()
-   {
-      return loggedIn;
-   }
-
-   public void setLoggedIn(boolean loggedIn)
-   {
-      this.loggedIn = loggedIn;
-   }
-
-   public User getUser()
-   {
-      return user;
-   }
-
-   public void setUser(User user)
-   {
-      this.user = user;
+      this.users = users;
    }
 }

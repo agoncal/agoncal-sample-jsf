@@ -25,8 +25,10 @@
                         </label>
                     </div>
                     <h:commandButton styleClass="btn btn-lg btn-primary btn-block" value="Sign in"
-                                     action="#{userBean.doLogin}"/>
+                                     action="#{accountBean.doLogin}"/>
                     <h:link styleClass="btn btn-link" value="Sign up for an account" outcome="signup"/>
+                    <br/>
+                    <h:link styleClass="btn btn-link" value="Forgot your password" outcome="forgot"/>
                 </h:form>
             </div>
             <div class="col-md-4"></div>
