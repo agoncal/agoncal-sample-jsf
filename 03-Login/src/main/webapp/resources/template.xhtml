@@ -51,10 +51,12 @@
                     <h:link class="navbar-brand" outcome="index.xhtml" value="JSF Login"/>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
+                    <h:form>
                     <ul class="nav navbar-nav">
-                        <li><a href="#about">Shopping Cart</a></li>
+                        <li><h:commandLink action="#{usersBean.doFindAll}" value="Users"/></li>
                         <li><a href="#">Admin</a></li>
                     </ul>
+                    </h:form>
                     <h:form class="navbar-form navbar-right">
                         <div class="form-group">
                             <h:inputText pt:placeholder="Search" class="form-control"/>
