@@ -19,6 +19,7 @@ import javax.transaction.Transactional;
 import org.agoncal.sample.jsf.login.model.User;
 
 import com.thedeanda.lorem.Lorem;
+import org.agoncal.sample.jsf.login.model.UserRole;
 
 /**
  * @author Antonio Goncalves http://www.antoniogoncalves.org --
@@ -41,6 +42,7 @@ public class AccountBean implements Serializable
    private User user = new User();
 
    private boolean loggedIn;
+   private boolean admin;
    private String password1;
    private String password2;
 
@@ -137,6 +139,16 @@ public class AccountBean implements Serializable
       this.loggedIn = loggedIn;
    }
 
+   public boolean isAdmin()
+   {
+      return admin;
+   }
+
+   public void setAdmin(boolean admin)
+   {
+      this.admin = admin;
+   }
+
    public User getUser()
    {
       return user;
@@ -165,5 +177,9 @@ public class AccountBean implements Serializable
    public void setPassword2(String password2)
    {
       this.password2 = password2;
+   }
+
+   public UserRole[] getRoles() {
+      return UserRole.values();
    }
 }

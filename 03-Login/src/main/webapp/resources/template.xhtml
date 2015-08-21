@@ -54,7 +54,7 @@
                     <h:form>
                         <ul class="nav navbar-nav">
                             <li><h:commandLink action="#{userBean.doFindAll}" value="Users"/></li>
-                            <li><h:link outcome="admin" value="Admin"/></li>
+                            <li><h:link outcome="admin" value="Admin" rendered="#{accountBean.isAdmin}"/></li>
                         </ul>
                     </h:form>
                     <h:form class="navbar-form navbar-right">
@@ -74,7 +74,7 @@
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="dropdown active">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                       aria-haspopup="true" aria-expanded="false">Antonio Goncalves <span
+                                       aria-haspopup="true" aria-expanded="false">#{accountBean.user.fullName} <span
                                             class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li><h:link outcome="profile" value="Profile"/></li>
