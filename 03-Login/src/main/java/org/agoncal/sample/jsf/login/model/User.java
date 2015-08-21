@@ -16,7 +16,7 @@ import sun.misc.BASE64Encoder;
 
 @Entity
 @NamedQueries({
-         @NamedQuery(name = User.FIND_BY_LOGIN, query = "SELECT u FROM User u WHERE u.login = :login"),
+         @NamedQuery(name = User.FIND_BY_EMAIL, query = "SELECT u FROM User u WHERE u.email = :email"),
          @NamedQuery(name = User.FIND_BY_LOGIN_PASSWORD, query = "SELECT u FROM User u WHERE u.login = :login AND u.password = :password"),
          @NamedQuery(name = User.FIND_ALL, query = "SELECT u FROM User u")
 })
@@ -36,6 +36,8 @@ public class User implements Serializable
    private int version;
 
    @Column(length = 10, nullable = false)
+   @NotNull
+   @Size(min = 5, max = 30)
    private String login;
 
    @Column(length = 256, nullable = false)
@@ -53,6 +55,7 @@ public class User implements Serializable
    @Size(min = 2, max = 50)
    private String lastName;
 
+   @NotNull
    private String email;
 
    private UserRole role;
@@ -61,7 +64,7 @@ public class User implements Serializable
    // = Constants =
    // ======================================
 
-   public static final String FIND_BY_LOGIN = "User.findByLogin";
+   public static final String FIND_BY_EMAIL = "User.findByEmail";
    public static final String FIND_BY_LOGIN_PASSWORD = "User.findByLoginAndPassword";
    public static final String FIND_ALL = "User.findAll";
 
@@ -70,12 +73,16 @@ public class User implements Serializable
    // ======================================
 
    /**
-    * Digest password with <code>SHA-256</code> then encode it with Base64.
+    * Digest password with <code>SHA-256</code> then encode it with Base64 when persisting or updating the entity.
     *
-    * @param plainTextPassword the password to digest and encode
-    * @return digested password
     * @throws RuntimeException if password could not be digested
     */
+   @PrePersist
+   private void digestPassword()
+   {
+      password = digestPassword(password);
+   }
+
    public String digestPassword(String plainTextPassword)
    {
       try
@@ -89,23 +96,6 @@ public class User implements Serializable
       {
          throw new RuntimeException("Exception encoding password", e);
       }
-   }
-
-   /**
-    * Given a password, this method then checks if it matches the user
-    *
-    * @param pwd Password
-    * @throws RuntimeException thrown if the password is empty or different than the one store in database
-    */
-   public void matchPassword(String pwd)
-   {
-      if (pwd == null || "".equals(pwd))
-         throw new RuntimeException("Invalid password");
-      String digestedPwd = digestPassword(pwd);
-
-      // The password entered by the customer is not the same stored in database
-      if (!digestedPwd.equals(password))
-         throw new RuntimeException("Passwords don't match");
    }
 
    // ======================================
@@ -182,11 +172,13 @@ public class User implements Serializable
       this.email = email;
    }
 
-   public UserRole getRole() {
+   public UserRole getRole()
+   {
       return role;
    }
 
-   public void setRole(UserRole role) {
+   public void setRole(UserRole role)
+   {
       this.role = role;
    }
 

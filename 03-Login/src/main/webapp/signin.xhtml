@@ -13,12 +13,12 @@
             <div class="col-md-4">
                 <h:form class="form-signin">
                     <h2 class="form-signin-heading">Please sign in</h2>
-                    <label for="inputEmail" class="sr-only">Email address</label>
-                    <h:inputText id="inputEmail" pt:type="email" class="form-control" pt:placeholder="Email address"
-                                 pt:required="true" pt:autofocus="true"/>
+                    <label for="inputLogin" class="sr-only">Login</label>
+                    <h:inputText id="inputLogin" class="form-control" pt:placeholder="Login"
+                                 pt:required="true" pt:autofocus="true" value="#{accountBean.user.login}"/>
                     <label for="inputPassword" class="sr-only">Password</label>
                     <h:inputText id="inputPassword" pt:type="password" class="form-control" pt:placeholder="Password"
-                                 pt:required="true"/>
+                                 pt:required="true" value="#{accountBean.user.password}"/>
 
                     <div class="checkbox">
                         <label>

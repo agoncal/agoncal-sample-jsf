@@ -11,10 +11,14 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.agoncal.sample.jsf.login.model.User;
+
+import com.thedeanda.lorem.Lorem;
 
 /**
  * @author Antonio Goncalves http://www.antoniogoncalves.org --
@@ -37,6 +41,8 @@ public class AccountBean implements Serializable
    private User user = new User();
 
    private boolean loggedIn;
+   private String password1;
+   private String password2;
 
    public String doNothing()
    {
@@ -45,23 +51,43 @@ public class AccountBean implements Serializable
 
    public String doSignup()
    {
+      user.setPassword(password1);
       em.persist(user);
-      facesContext.addMessage(null, new FacesMessage("Successful", "User created " + user.getFirstName()));
+      resetPasswords();
+      facesContext.addMessage(null,
+               new FacesMessage("Successful", "Hi " + user.getFirstName() + ", welcome to this website"));
       loggedIn = true;
       return "index";
    }
 
    public String doUpdateProfile()
    {
+      if (password1 != null && !password1.isEmpty())
+         user.setPassword(user.digestPassword(password1));
       em.merge(user);
-      facesContext.addMessage(null, new FacesMessage("Successful", "Profile updated " + user.getFirstName()));
+      resetPasswords();
+      facesContext.addMessage(null,
+               new FacesMessage("Successful", "Profile has been updated for " + user.getFirstName()));
       return null;
    }
 
    public String doLogin()
    {
-      loggedIn = true;
-      return "index";
+      TypedQuery<User> query = em.createNamedQuery(User.FIND_BY_LOGIN_PASSWORD, User.class);
+      query.setParameter("login", user.getLogin());
+      query.setParameter("password", user.digestPassword(user.getPassword()));
+      try
+      {
+         user = query.getSingleResult();
+         loggedIn = true;
+         return "index";
+      }
+      catch (NoResultException e)
+      {
+         facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Wrong user/password",
+                  "Check your inputs or ask for a new password"));
+         return null;
+      }
    }
 
    public String doLogout()
@@ -74,8 +100,31 @@ public class AccountBean implements Serializable
 
    public String doForgotPassword()
    {
-      facesContext.addMessage(null, new FacesMessage("Email sent", "An email has been sent to " + user.getEmail()));
-      return "index";
+      TypedQuery<User> query = em.createNamedQuery(User.FIND_BY_EMAIL, User.class);
+      query.setParameter("email", user.getEmail());
+      try
+      {
+         user = query.getSingleResult();
+         String temporaryPassword = Lorem.getWords(1);
+         user.setPassword(user.digestPassword(temporaryPassword));
+         em.merge(user);
+         facesContext.addMessage(null, new FacesMessage("Email sent",
+                  "An email has been sent to " + user.getEmail() + " with temporary password :" + temporaryPassword));
+         // send an email with the password "dummyPassword"
+         return doLogout();
+      }
+      catch (NoResultException e)
+      {
+         facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Unknown email",
+                  "This email address is unknonw in our system"));
+         return null;
+      }
+   }
+
+   private void resetPasswords()
+   {
+      password1 = null;
+      password2 = null;
    }
 
    public boolean isLoggedIn()
@@ -96,5 +145,25 @@ public class AccountBean implements Serializable
    public void setUser(User user)
    {
       this.user = user;
+   }
+
+   public String getPassword1()
+   {
+      return password1;
+   }
+
+   public void setPassword1(String password1)
+   {
+      this.password1 = password1;
+   }
+
+   public String getPassword2()
+   {
+      return password2;
+   }
+
+   public void setPassword2(String password2)
+   {
+      this.password2 = password2;
    }
 }

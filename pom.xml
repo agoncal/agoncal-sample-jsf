@@ -26,7 +26,7 @@
         <version.primefaces>5.2</version.primefaces>
         <version.primefaces-themes>1.0.10</version.primefaces-themes>
         <!--Test-->
-        <version.junit>4.11</version.junit>
+        <version.junit>4.12</version.junit>
         <version.arquillian>1.0.4.Final</version.arquillian>
         <version.arquillian.glassfish.embedded>1.0.0.CR4</version.arquillian.glassfish.embedded>
         <!--Maven Plugins-->

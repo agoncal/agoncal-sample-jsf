@@ -15,7 +15,7 @@
                     <h2 class="form-forgot-heading">An email will be sent with your new password</h2>
                     <label for="inputEmail" class="sr-only">Email address</label>
                     <h:inputText id="inputEmail" pt:type="email" class="form-control" pt:placeholder="Email address"
-                                 pt:required="true" pt:autofocus="true"/>
+                                 pt:required="true" pt:autofocus="true" value="#{accountBean.user.email}"/>
                     <br/>
                     <h:commandButton styleClass="btn btn-lg btn-primary btn-block" value="Send email"
                                      action="#{accountBean.doForgotPassword}"/>

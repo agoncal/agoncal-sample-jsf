@@ -23,6 +23,12 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">
+                            <h:outputText value="Email"/>
+                        </f:facet>
+                        <h:outputText id="itemEmail" value="#{_item.email}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
                             <h:outputText value="Firstname"/>
                         </f:facet>
                         <h:outputText id="itemFirstname" value="#{_item.firstName}"/>
@@ -32,6 +38,12 @@
                             <h:outputText value="Lastname"/>
                         </f:facet>
                         <h:outputText id="itemLastname" value="#{_item.lastName}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Password"/>
+                        </f:facet>
+                        <h:outputText id="itemPassword" value="#{_item.password}"/>
                     </h:column>
                 </h:dataTable>
             </div>
