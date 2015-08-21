@@ -43,19 +43,18 @@ public class AccountBean implements Serializable
       return null;
    }
 
-   public String doPersistOrMerge()
+   public String doSignup()
    {
-      if (user.getId() == null)
-      {
-         em.persist(user);
-         facesContext.addMessage(null, new FacesMessage("Successful", "User created " + user.getFirstName()));
-      }
-      else
-      {
-         em.merge(user);
-         facesContext.addMessage(null, new FacesMessage("Successful", "User updated " + user.getFirstName()));
-      }
+      em.persist(user);
+      facesContext.addMessage(null, new FacesMessage("Successful", "User created " + user.getFirstName()));
       loggedIn = true;
+      return "index";
+   }
+
+   public String doUpdateProfile()
+   {
+      em.merge(user);
+      facesContext.addMessage(null, new FacesMessage("Successful", "Profile updated " + user.getFirstName()));
       return null;
    }
 
@@ -70,6 +69,12 @@ public class AccountBean implements Serializable
       AlterableContext ctx = (AlterableContext) beanManager.getContext(SessionScoped.class);
       Bean<?> myBean = beanManager.getBeans(AccountBean.class).iterator().next();
       ctx.destroy(myBean);
+      return "index";
+   }
+
+   public String doForgotPassword()
+   {
+      facesContext.addMessage(null, new FacesMessage("Email sent", "An email has been sent to " + user.getEmail()));
       return "index";
    }
 

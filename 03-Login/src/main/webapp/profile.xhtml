@@ -2,17 +2,13 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-                xmlns:p="http://primefaces.org/ui"
                 template="/resources/template.xhtml">
 
-    <ui:define name="title">Signup</ui:define>
+    <ui:define name="title">Profile</ui:define>
 
-    <ui:define name="message">Sign up</ui:define>
+    <ui:define name="message">Update your profile</ui:define>
 
     <ui:define name="body">
-
-        <p:messages id="messages" showDetail="true" closable="true"/>
-
 
         <div class="row">
             <div class="col-md-2"></div>
@@ -22,7 +18,7 @@
                         <label for="inputLogin" class="col-sm-2 control-label">Login</label>
 
                         <div class="col-sm-10">
-                            <h:inputText class="form-control" id="inputLogin" value="#{accountBean.user.login}"/>
+                            <h:inputText class="form-control" id="inputLogin" value="#{accountBean.user.login}" pt:readonly="true"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -57,7 +53,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <h:commandButton class="btn btn-default" value="Sign up" action="#{accountBean.doSignup}"/>
+                            <h:commandButton class="btn btn-default" value="Update profile" action="#{accountBean.doUpdateProfile}"/>
                         </div>
                     </div>
                 </h:form>
