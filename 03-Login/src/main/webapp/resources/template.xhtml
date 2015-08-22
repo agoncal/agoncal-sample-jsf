@@ -54,7 +54,7 @@
                     <h:form>
                         <ul class="nav navbar-nav">
                             <li><h:commandLink action="#{userBean.doFindAll}" value="Users"/></li>
-                            <li><h:link outcome="admin" value="Admin" rendered="#{accountBean.isAdmin}"/></li>
+                            <li><h:link outcome="admin" value="Admin" rendered="#{accountBean.admin}"/></li>
                         </ul>
                     </h:form>
                     <h:form class="navbar-form navbar-right">

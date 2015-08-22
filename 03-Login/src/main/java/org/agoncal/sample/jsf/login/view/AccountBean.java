@@ -17,9 +17,9 @@ import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.agoncal.sample.jsf.login.model.User;
+import org.agoncal.sample.jsf.login.model.UserRole;
 
 import com.thedeanda.lorem.Lorem;
-import org.agoncal.sample.jsf.login.model.UserRole;
 
 /**
  * @author Antonio Goncalves http://www.antoniogoncalves.org --
@@ -59,6 +59,8 @@ public class AccountBean implements Serializable
       facesContext.addMessage(null,
                new FacesMessage("Successful", "Hi " + user.getFirstName() + ", welcome to this website"));
       loggedIn = true;
+      if (user.getRole().equals(UserRole.ADMIN))
+         admin = true;
       return "index";
    }
 
@@ -81,6 +83,8 @@ public class AccountBean implements Serializable
       try
       {
          user = query.getSingleResult();
+         if (user.getRole().equals(UserRole.ADMIN))
+            admin = true;
          loggedIn = true;
          return "index";
       }
@@ -179,7 +183,8 @@ public class AccountBean implements Serializable
       this.password2 = password2;
    }
 
-   public UserRole[] getRoles() {
+   public UserRole[] getRoles()
+   {
       return UserRole.values();
    }
 }
