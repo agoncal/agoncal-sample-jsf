@@ -1,4 +1,4 @@
-package org.agoncal.sample.jsf.login.view;
+package org.agoncal.sample.jsf.login.utils;
 
 import com.thedeanda.lorem.Lorem;
 
@@ -9,7 +9,7 @@ import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class FacesProducer
+public class ResourceProducer
 {
 
    @Produces
@@ -34,7 +34,6 @@ public class FacesProducer
    }
 
    @Produces
-   @RequestScoped
    @Named("lorem")
    private String produceLorem()
    {

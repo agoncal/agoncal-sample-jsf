@@ -10,12 +10,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.agoncal.sample.jsf.login.model.User;
+import org.agoncal.sample.jsf.login.utils.CatchException;
 
 /**
  * @author Antonio Goncalves http://www.antoniogoncalves.org --
  */
 @Named
 @RequestScoped
+@CatchException
 public class UserBean
 {
 

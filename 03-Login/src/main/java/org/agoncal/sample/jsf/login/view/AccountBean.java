@@ -23,6 +23,7 @@ import javax.transaction.Transactional;
 
 import org.agoncal.sample.jsf.login.model.User;
 import org.agoncal.sample.jsf.login.model.UserRole;
+import org.agoncal.sample.jsf.login.utils.CatchException;
 
 import com.thedeanda.lorem.Lorem;
 
@@ -32,6 +33,7 @@ import com.thedeanda.lorem.Lorem;
 @Named
 @SessionScoped
 @Transactional
+@CatchException
 public class AccountBean implements Serializable
 {
 
@@ -61,7 +63,7 @@ public class AccountBean implements Serializable
    private String password2;
    // Remember me and cookie
    private static final String COOKIE_NAME = "JSFSampleCookie";
-   private static final int COOKIE_AGE = 60; //Expires after 60 seconds or even 2_592_000 for one month
+   private static final int COOKIE_AGE = 60; // Expires after 60 seconds or even 2_592_000 for one month
 
    private boolean rememberMe;
 
@@ -92,11 +94,22 @@ public class AccountBean implements Serializable
 
    public String doSignup()
    {
+      // Does the login already exists ?
+      if (em.createNamedQuery(User.FIND_BY_LOGIN, User.class).setParameter("login", user.getLogin())
+               .getResultList().size() > 0)
+      {
+         facesContext.addMessage(null,
+                  new FacesMessage(FacesMessage.SEVERITY_WARN, "Login already exists " + user.getLogin(),
+                           "You must choose a different login"));
+         return null;
+      }
+
+      // Everything is ok, we can create the user
       user.setPassword(password1);
       em.persist(user);
       resetPasswords();
       facesContext.addMessage(null,
-               new FacesMessage("Successful", "Hi " + user.getFirstName() + ", welcome to this website"));
+               new FacesMessage(FacesMessage.SEVERITY_INFO, "Hi " + user.getFirstName(), "Welcome to this website"));
       loggedIn = true;
       if (user.getRole().equals(UserRole.ADMIN))
          admin = true;
@@ -167,7 +180,7 @@ public class AccountBean implements Serializable
          String temporaryPassword = Lorem.getWords(1);
          user.setPassword(user.digestPassword(temporaryPassword));
          em.merge(user);
-         facesContext.addMessage(null, new FacesMessage("Email sent",
+         facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Email sent",
                   "An email has been sent to " + user.getEmail() + " with temporary password :" + temporaryPassword));
          // send an email with the password "dummyPassword"
          return doLogout();
@@ -187,7 +200,8 @@ public class AccountBean implements Serializable
       em.merge(user);
       resetPasswords();
       facesContext.addMessage(null,
-              new FacesMessage("Successful", "Profile has been updated for " + user.getFirstName()));
+               new FacesMessage(FacesMessage.SEVERITY_INFO, "Profile has been updated for " + user.getFirstName(),
+                        null));
       return null;
    }
 
