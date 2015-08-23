@@ -78,9 +78,9 @@
                                             class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li><h:link outcome="profile" value="Profile"/></li>
-                                        <li><a href="#">History</a></li>
                                         <li role="separator" class="divider"></li>
                                         <li><h:commandLink action="#{accountBean.doLogout}" value="Logout"/></li>
+                                        <li><h:commandLink action="#{accountBean.doLogoutAndRemoveCookie}" value="Logout and remove cookie"/></li>
                                     </ul>
                                 </li>
                             </ul>

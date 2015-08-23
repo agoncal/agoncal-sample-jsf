@@ -146,6 +146,17 @@ public class AccountBean implements Serializable
       return "index";
    }
 
+   public String doLogoutAndRemoveCookie()
+   {
+      removeCookie();
+      user.setUuid(null);
+      em.merge(user);
+      AlterableContext ctx = (AlterableContext) beanManager.getContext(SessionScoped.class);
+      Bean<?> myBean = beanManager.getBeans(AccountBean.class).iterator().next();
+      ctx.destroy(myBean);
+      return "index";
+   }
+
    public String doForgotPassword()
    {
       TypedQuery<User> query = em.createNamedQuery(User.FIND_BY_EMAIL, User.class);
