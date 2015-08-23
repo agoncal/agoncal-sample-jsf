@@ -12,18 +12,25 @@ import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
 
 /**
- * @author Antonio Goncalves - http://www.antoniogoncalves.org
+ * @author Antonio Goncalves - http://www.antoniogoncalves.org --
  * 
  *         This interceptor catches exception and displayes them in a JSF page
  */
-
 @Interceptor
 @CatchException
 public class CatchExceptionInterceptor implements Serializable
 {
 
+   // ======================================
+   // = Attributes =
+   // ======================================
+
    @Inject
    private FacesContext context;
+
+   // ======================================
+   // = Business methods =
+   // ======================================
 
    @AroundInvoke
    public Object catchException(InvocationContext ic) throws Exception

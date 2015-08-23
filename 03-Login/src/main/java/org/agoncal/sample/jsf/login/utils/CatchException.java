@@ -10,14 +10,14 @@ import java.lang.annotation.Target;
 import javax.interceptor.InterceptorBinding;
 
 /**
- * @author Antonio Goncalves
- *         http://www.antoniogoncalves.org
- *         --
+ * @author Antonio Goncalves - http://www.antoniogoncalves.org --
+ * 
  *         Any JSF backing bean using this interceptor binding will catch and display exceptions on the JSF page
  */
 
 @InterceptorBinding
-@Target({METHOD, TYPE})
+@Target({ METHOD, TYPE })
 @Retention(RUNTIME)
-public @interface CatchException {
+public @interface CatchException
+{
 }

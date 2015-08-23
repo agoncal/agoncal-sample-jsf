@@ -28,7 +28,10 @@ import org.agoncal.sample.jsf.login.utils.CatchException;
 import com.thedeanda.lorem.Lorem;
 
 /**
- * @author Antonio Goncalves http://www.antoniogoncalves.org --
+ * @author Antonio Goncalves - http://www.antoniogoncalves.org --
+ *
+ *         This session scoped JSF Backing bean deals with all the user's interactions: logged in, logged out, update
+ *         profile, send password...
  */
 @Named
 @SessionScoped
@@ -36,6 +39,10 @@ import com.thedeanda.lorem.Lorem;
 @CatchException
 public class AccountBean implements Serializable
 {
+
+   // ======================================
+   // = Attributes =
+   // ======================================
 
    @Inject
    private BeanManager beanManager;
@@ -67,6 +74,10 @@ public class AccountBean implements Serializable
 
    private boolean rememberMe;
 
+   // ======================================
+   // = Lifecycle methods =
+   // ======================================
+
    @PostConstruct
    private void checkIfUserHasRememberMeCookie()
    {
@@ -91,6 +102,10 @@ public class AccountBean implements Serializable
          removeCookie();
       }
    }
+
+   // ======================================
+   // = Business methods =
+   // ======================================
 
    public String doSignup()
    {
@@ -247,6 +262,10 @@ public class AccountBean implements Serializable
       password1 = null;
       password2 = null;
    }
+
+   // ======================================
+   // = Getters & setters =
+   // ======================================
 
    public boolean isLoggedIn()
    {

@@ -1,16 +1,24 @@
 package org.agoncal.sample.jsf.login.utils;
 
-import com.thedeanda.lorem.Lorem;
-
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Produces;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.thedeanda.lorem.Lorem;
+
+/**
+ * @author Antonio Goncalves - http://www.antoniogoncalves.org --
+ *
+ *         This class produces a few resources so they can be injected in CDI
+ */
 public class ResourceProducer
 {
+
+   // ======================================
+   // = Business methods =
+   // ======================================
 
    @Produces
    @RequestScoped
@@ -19,12 +27,12 @@ public class ResourceProducer
       return FacesContext.getCurrentInstance();
    }
 
-//   @Produces
-//   @RequestScoped
-//   private HttpServletRequest produceRequest()
-//   {
-//      return (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-//   }
+   // @Produces
+   // @RequestScoped
+   // private HttpServletRequest produceRequest()
+   // {
+   // return (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+   // }
 
    @Produces
    @RequestScoped

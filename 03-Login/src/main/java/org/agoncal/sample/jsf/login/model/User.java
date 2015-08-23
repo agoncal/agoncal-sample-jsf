@@ -11,7 +11,9 @@ import javax.validation.constraints.Size;
 import sun.misc.BASE64Encoder;
 
 /**
- * @author Antonio Goncalves http://www.antoniogoncalves.org --
+ * @author Antonio Goncalves - http://www.antoniogoncalves.org --
+ * 
+ *         Represent a user in the system.
  */
 
 @Entity
@@ -77,6 +79,16 @@ public class User implements Serializable
    public static final String FIND_ALL = "User.findAll";
 
    // ======================================
+   // = Lifecycle methods =
+   // ======================================
+
+   @PrePersist
+   private void digestPassword()
+   {
+      password = digestPassword(password);
+   }
+
+   // ======================================
    // = Business methods =
    // ======================================
 
@@ -85,12 +97,6 @@ public class User implements Serializable
     *
     * @throws RuntimeException if password could not be digested
     */
-   @PrePersist
-   private void digestPassword()
-   {
-      password = digestPassword(password);
-   }
-
    public String digestPassword(String plainTextPassword)
    {
       try
