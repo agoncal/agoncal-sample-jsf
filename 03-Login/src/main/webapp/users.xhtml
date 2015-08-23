@@ -51,6 +51,12 @@
                         </f:facet>
                         <h:outputText id="itemPassword" value="#{_item.password}"/>
                     </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="UUID"/>
+                        </f:facet>
+                        <h:outputText id="itemUUID" value="#{_item.uuid}"/>
+                    </h:column>
                 </h:dataTable>
             </div>
             <div class="col-md-2"></div>

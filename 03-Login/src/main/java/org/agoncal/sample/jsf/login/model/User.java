@@ -17,6 +17,7 @@ import sun.misc.BASE64Encoder;
 @Entity
 @NamedQueries({
          @NamedQuery(name = User.FIND_BY_EMAIL, query = "SELECT u FROM User u WHERE u.email = :email"),
+         @NamedQuery(name = User.FIND_BY_UUID, query = "SELECT u FROM User u WHERE u.uuid = :uuid"),
          @NamedQuery(name = User.FIND_BY_LOGIN_PASSWORD, query = "SELECT u FROM User u WHERE u.login = :login AND u.password = :password"),
          @NamedQuery(name = User.FIND_ALL, query = "SELECT u FROM User u")
 })
@@ -44,6 +45,7 @@ public class User implements Serializable
    @NotNull
    @Size(min = 1, max = 256)
    private String password;
+   private String uuid;
 
    @Column(length = 50, name = "first_name", nullable = false)
    @NotNull
@@ -65,6 +67,7 @@ public class User implements Serializable
    // ======================================
 
    public static final String FIND_BY_EMAIL = "User.findByEmail";
+   public static final String FIND_BY_UUID = "User.findByUUID";
    public static final String FIND_BY_LOGIN_PASSWORD = "User.findByLoginAndPassword";
    public static final String FIND_ALL = "User.findAll";
 
@@ -185,6 +188,14 @@ public class User implements Serializable
    public void setRole(UserRole role)
    {
       this.role = role;
+   }
+
+   public String getUuid() {
+      return uuid;
+   }
+
+   public void setUuid(String uuid) {
+      this.uuid = uuid;
    }
 
    // ======================================

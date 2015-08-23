@@ -61,7 +61,7 @@
                         <div class="form-group">
                             <h:inputText pt:placeholder="Search" class="form-control"/>
                         </div>
-                        <h:commandButton type="submit" class="btn btn-success" action="#{accountBean.doNothing}"
+                        <h:commandButton type="submit" class="btn btn-success" action="#{accountBean.doSearch}"
                                          value="Search"/>
                         <h:panelGroup layout="block" class="form-group" rendered="#{!accountBean.loggedIn}">
                             <ul class="nav navbar-nav navbar-right">
