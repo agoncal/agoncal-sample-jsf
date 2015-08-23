@@ -79,6 +79,21 @@ public class User implements Serializable
    public static final String FIND_ALL = "User.findAll";
 
    // ======================================
+   // = Constrcutors =
+   // ======================================
+
+   public User() {
+   }
+
+   public User(String login, String firstName, String lastName, String email, UserRole role) {
+      this.login = login;
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.email = email;
+      this.role = role;
+   }
+
+   // ======================================
    // = Lifecycle methods =
    // ======================================
 

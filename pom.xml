@@ -27,14 +27,15 @@
         <version.primefaces-themes>1.0.10</version.primefaces-themes>
         <!--Test-->
         <version.junit>4.12</version.junit>
-        <version.arquillian>1.0.4.Final</version.arquillian>
-        <version.arquillian.glassfish.embedded>1.0.0.CR4</version.arquillian.glassfish.embedded>
+        <version.arquillian_core>1.1.8.Final</version.arquillian_core>
+        <skipTests>false</skipTests>
+        <skipITs>${skipTests}</skipITs>
+        <skipUTs>${skipTests}</skipUTs>
         <!--Maven Plugins-->
         <version.maven.embedded.glassfish.plugin>4.0</version.maven.embedded.glassfish.plugin>
         <version.maven.clean.plugin>2.4.1</version.maven.clean.plugin>
         <version.maven.war.plugin>2.4</version.maven.war.plugin>
         <version.maven.compiler.plugin>3.1</version.maven.compiler.plugin>
-        <version.maven.failsafe.plugin>2.14.1</version.maven.failsafe.plugin>
         <version.maven.exec.plugin>1.2.1</version.maven.exec.plugin>
         <version.maven.jaxws.plugin>2.2</version.maven.jaxws.plugin>
         <version.jrebel.plugin>1.1.5</version.jrebel.plugin>
@@ -105,6 +106,13 @@
                 <version>${version.junit}</version>
                 <scope>test</scope>
             </dependency>
+            <dependency>
+                <groupId>org.jboss.arquillian</groupId>
+                <artifactId>arquillian-bom</artifactId>
+                <version>${version.arquillian_core}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -137,7 +145,11 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-failsafe-plugin</artifactId>
-                    <version>${version.maven.failsafe.plugin}</version>
+                    <version>2.18.1</version>
+                    <configuration>
+                        <skipTests>${skipTests}</skipTests>
+                        <skipITs>${skipITs}</skipITs>
+                    </configuration>
                     <executions>
                         <execution>
                             <goals>
@@ -146,6 +158,14 @@
                             </goals>
                         </execution>
                     </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.18.1</version>
+                    <configuration>
+                        <skipTests>false</skipTests>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.zeroturnaround</groupId>

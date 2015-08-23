@@ -123,8 +123,10 @@ public class AccountBean implements Serializable
       user.setPassword(password1);
       em.persist(user);
       resetPasswords();
-      facesContext.addMessage(null,
-               new FacesMessage(FacesMessage.SEVERITY_INFO, "Hi " + user.getFirstName(), "Welcome to this website"));
+      FacesContext.getCurrentInstance().addMessage(null,
+              new FacesMessage(FacesMessage.SEVERITY_INFO, "Hi " + user.getFirstName(), "Welcome to this website"));
+//      facesContext.addMessage(null,
+//               new FacesMessage(FacesMessage.SEVERITY_INFO, "Hi " + user.getFirstName(), "Welcome to this website"));
       loggedIn = true;
       if (user.getRole().equals(UserRole.ADMIN))
          admin = true;

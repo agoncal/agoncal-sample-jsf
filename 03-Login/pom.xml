@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.agoncal.sample.jsf</groupId>
-    <artifactId>login</artifactId>
-    <version>1.0</version>
-    <packaging>war</packaging>
-    <name>03 - Login : Login and logout mecanism in JSF and CDI</name>
-
     <parent>
         <groupId>org.agoncal.sample.jsf</groupId>
         <artifactId>parent</artifactId>
         <version>1.0</version>
     </parent>
+    <groupId>org.agoncal.sample.jsf</groupId>
+    <artifactId>login</artifactId>
+    <version>1.0</version>
+    <packaging>war</packaging>
+    <name>03 - Login : Login and logout mecanism in JSF and CDI</name>
 
     <dependencies>
         <dependency>
@@ -23,7 +21,6 @@
             <type>pom</type>
             <scope>provided</scope>
         </dependency>
-        <!-- UI (WebJar, Primefaces...) -->
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
@@ -49,10 +46,40 @@
             <artifactId>lorem</artifactId>
             <version>1.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.jboss.arquillian.junit</groupId>
+            <artifactId>arquillian-junit-container</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
-
     <build>
         <finalName>sampleJSFLogin</finalName>
     </build>
 
+    <profiles>
+        <profile>
+            <id>arquillian-wildfly-remote</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <configuration>
+                            <systemPropertyVariables>
+                                <arquillian.launch>arquillian-wildfly-remote</arquillian.launch>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </plugin>
+
+                </plugins>
+            </build>
+            <dependencies>
+                <dependency>
+                    <groupId>org.wildfly</groupId>
+                    <artifactId>wildfly-arquillian-container-remote</artifactId>
+                    <version>8.2.1.Final</version>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
 </project>
