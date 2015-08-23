@@ -60,7 +60,7 @@ public class AccountBean implements Serializable
    private String password1;
    private String password2;
    // Remember me and cookie
-   private static final String COOKIE_NAME = "JSFSample";
+   private static final String COOKIE_NAME = "JSFSampleCookie";
    private static final int COOKIE_AGE = 60; //Expires after 60 seconds or even 2_592_000 for one month
 
    private boolean rememberMe;
@@ -216,7 +216,7 @@ public class AccountBean implements Serializable
    private void addCookie(String value)
    {
       Cookie cookie = new Cookie(COOKIE_NAME, value);
-      cookie.setPath("/");
+      cookie.setPath("/sampleJSFLogin");
       cookie.setMaxAge(COOKIE_AGE);
       response.addCookie(cookie);
    }
@@ -224,7 +224,6 @@ public class AccountBean implements Serializable
    private void removeCookie()
    {
       Cookie cookie = new Cookie(COOKIE_NAME, null);
-      cookie.setPath("/");
       cookie.setMaxAge(0);
       response.addCookie(cookie);
    }
